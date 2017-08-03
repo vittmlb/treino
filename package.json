@@ -1,0 +1,37 @@
+{
+  "name": "treino",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "node ./node_modules/mocha/bin/mocha"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/chai": "^4.0.2",
+    "@types/chalk": "^0.4.31",
+    "@types/express": "^4.0.36",
+    "@types/mocha": "^2.2.41",
+    "@types/node": "^8.0.18",
+    "@types/readline-sync": "^1.4.2",
+    "bootstrap": "^4.0.0-alpha.6",
+    "chai": "^4.1.0",
+    "chalk": "^2.0.1",
+    "clear": "0.0.1",
+    "express": "^4.15.3",
+    "figlet": "^1.2.0",
+    "fs": "0.0.1-security",
+    "jquery": "^3.2.1",
+    "mocha": "3.0.0-2",
+    "readline-sync": "^1.4.7",
+    "reflect-metadata": "^0.1.10",
+    "require-reload": "^0.2.2",
+    "should": "^11.2.1",
+    "types-installer": "^1.4.0",
+    "typescript": "^2.4.2"
+  },
+  "devDependencies": {
+    "ts-node": "^3.3.0"
+  }
+}
