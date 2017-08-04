@@ -7,6 +7,10 @@ ex.push(new exercises_1.RegexExercises(data.regex_1));
 ex.push(new exercises_1.RegexExercises(data.regex_2));
 ex.push(new exercises_1.RegexExercises(data.regex_3));
 ex.push(new exercises_1.RegexExercises(data.regex_4));
+ex.push(new exercises_1.RegexExercises(data.regex_5));
+ex.push(new exercises_1.RegexExercises(data.regex_6));
+ex.push(new exercises_1.RegexExercises(data.regex_7));
+ex.push(new exercises_1.RegexExercises(data.regex_8));
 exports.value = ex;
 function find(elem) {
     for (let i = 0; i < ex.length; i++) {

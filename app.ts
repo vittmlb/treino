@@ -8,13 +8,6 @@ import * as Chalk from 'chalk';
 import * as figlet from './node_modules/figlet';
 import * as clear from './node_modules/clear';
 
-import * as fs from 'fs';
-import * as path from 'path';
-
-import * as Mocha from './mocha.helper.js';
-import * as draft from './draft.js';
-
-import { appGlobals } from './globals/globals';
 
 
 //

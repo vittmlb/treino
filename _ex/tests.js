@@ -75,7 +75,7 @@ class DevTests extends Tests {
         });
     }
     renew() {
-        delete require.cache[require.resolve('../draft.js')];
+        // delete require.cache[require.resolve('../draft.js')];
     }
 }
 exports.DevTests = DevTests;
@@ -94,7 +94,7 @@ class RegexTests extends Tests {
         });
     }
     renew() {
-        delete require.cache[require.resolve('../draft.js')];
+        // delete require.cache[require.resolve('../draft.js')];
     }
 }
 exports.RegexTests = RegexTests;

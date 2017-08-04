@@ -1,8 +1,6 @@
 // import { find, value } from '../jsCookBook/jsExercises';
 import { find, value } from '../regex/regex.exercises';
 import * as readline from "readline-sync";
-import { JsExercises, RegexExercises } from "./exercises";
-import * as Loader from '../mocha.helper.js';
 import { appGlobals } from "../globals/globals";
 
 class ExerciseManager {
@@ -86,6 +84,7 @@ export class DevTests extends Tests {
 
     applyTest(): any {
         this._questionsArray.forEach(p => {
+
             appGlobals.exercise = p.exercise;
             console.log('  --------------------------------------\n');
             readline.question(p.exercise.printQuestion());
@@ -95,7 +94,7 @@ export class DevTests extends Tests {
     }
 
     renew(): any {
-        delete require.cache[require.resolve('../draft.js')];
+        // delete require.cache[require.resolve('../draft.js')];
     }
 
 }
@@ -120,7 +119,7 @@ export class RegexTests extends Tests {
     }
 
     renew(): any {
-        delete require.cache[require.resolve('../draft.js')];
+        // delete require.cache[require.resolve('../draft.js')];
     }
 
 }
