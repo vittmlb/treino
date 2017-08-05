@@ -1,12 +1,12 @@
-import { AnswersTypes } from "../_ex/aswers";
-
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const aswers_1 = require("../../_ex/aswers");
 const _book = 'Javascript CookBook';
 const _chapter = 2;
 const _topics = [
     'Arrays'
 ];
-
-export const js_2_3_1: any = {
+exports.js_2_3_1 = {
     source: {
         book: _book,
         chapter: _chapter,
@@ -18,7 +18,7 @@ export const js_2_3_1: any = {
         title: `Remover o elemento 'seal' do array.`
     },
     answer: {
-        type: AnswersTypes.array,
+        type: aswers_1.AnswersTypes.array,
         correct: ['dog', 'cat', 'walrus', 'lion', 'cat'],
     },
     data: {
@@ -28,8 +28,7 @@ export const js_2_3_1: any = {
         topics: _topics
     },
 };
-
-export const js_2_3_2: any = {
+exports.js_2_3_2 = {
     source: {
         book: _book,
         chapter: _chapter,
@@ -41,7 +40,7 @@ export const js_2_3_2: any = {
         title: `Substituir o último elemento 'cat' do array por 'slavost'.`
     },
     answer: {
-        type: AnswersTypes.array,
+        type: aswers_1.AnswersTypes.array,
         correct: ['cat', 'dog', 'slavost', 'codorna'],
     },
     data: {
@@ -51,8 +50,7 @@ export const js_2_3_2: any = {
         topics: _topics
     },
 };
-
-export const js_2_3_3: any = {
+exports.js_2_3_3 = {
     source: {
         book: _book,
         chapter: _chapter,
@@ -64,7 +62,7 @@ export const js_2_3_3: any = {
         title: `Substituir o último elemento por 'muslim'.`
     },
     answer: {
-        type: AnswersTypes.array,
+        type: aswers_1.AnswersTypes.array,
         correct: ['cat', 'walrus', 'lion', 'muslim']
     },
     data: {
@@ -74,8 +72,7 @@ export const js_2_3_3: any = {
         topics: _topics
     },
 };
-
-export const js_2_3_4: any = {
+exports.js_2_3_4 = {
     source: {
         book: _book,
         chapter: _chapter,
@@ -87,7 +84,7 @@ export const js_2_3_4: any = {
         title: `Substituir o 2o elemento por 'zebra' e 'muslim'`
     },
     answer: {
-        type: AnswersTypes.array,
+        type: aswers_1.AnswersTypes.array,
         correct: ['cat', 'zebra', 'muslim', 'cat', 'codorna']
     },
     data: {

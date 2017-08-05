@@ -114,7 +114,7 @@ exports.regex_5 = {
         number: 5,
     },
     question: {
-        index: '4',
+        index: '5',
         title: `Extract filenames and extension types of only image files (not including temp). Img files: jpg, png and gif.`
     },
     answer: {

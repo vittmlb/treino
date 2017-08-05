@@ -1,12 +1,12 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const aswers_1 = require("../_ex/aswers");
+import { AnswersTypes } from "../../_ex/aswers";
+
 const _book = 'Javascript CookBook';
 const _chapter = 2;
 const _topics = [
     'Arrays'
 ];
-exports.js_2_3_1 = {
+
+export const js_2_3_1: any = {
     source: {
         book: _book,
         chapter: _chapter,
@@ -18,7 +18,7 @@ exports.js_2_3_1 = {
         title: `Remover o elemento 'seal' do array.`
     },
     answer: {
-        type: aswers_1.AnswersTypes.array,
+        type: AnswersTypes.array,
         correct: ['dog', 'cat', 'walrus', 'lion', 'cat'],
     },
     data: {
@@ -28,7 +28,8 @@ exports.js_2_3_1 = {
         topics: _topics
     },
 };
-exports.js_2_3_2 = {
+
+export const js_2_3_2: any = {
     source: {
         book: _book,
         chapter: _chapter,
@@ -40,7 +41,7 @@ exports.js_2_3_2 = {
         title: `Substituir o último elemento 'cat' do array por 'slavost'.`
     },
     answer: {
-        type: aswers_1.AnswersTypes.array,
+        type: AnswersTypes.array,
         correct: ['cat', 'dog', 'slavost', 'codorna'],
     },
     data: {
@@ -50,7 +51,8 @@ exports.js_2_3_2 = {
         topics: _topics
     },
 };
-exports.js_2_3_3 = {
+
+export const js_2_3_3: any = {
     source: {
         book: _book,
         chapter: _chapter,
@@ -62,7 +64,7 @@ exports.js_2_3_3 = {
         title: `Substituir o último elemento por 'muslim'.`
     },
     answer: {
-        type: aswers_1.AnswersTypes.array,
+        type: AnswersTypes.array,
         correct: ['cat', 'walrus', 'lion', 'muslim']
     },
     data: {
@@ -72,7 +74,8 @@ exports.js_2_3_3 = {
         topics: _topics
     },
 };
-exports.js_2_3_4 = {
+
+export const js_2_3_4: any = {
     source: {
         book: _book,
         chapter: _chapter,
@@ -84,7 +87,7 @@ exports.js_2_3_4 = {
         title: `Substituir o 2o elemento por 'zebra' e 'muslim'`
     },
     answer: {
-        type: aswers_1.AnswersTypes.array,
+        type: AnswersTypes.array,
         correct: ['cat', 'zebra', 'muslim', 'cat', 'codorna']
     },
     data: {
