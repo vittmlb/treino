@@ -1,4 +1,4 @@
-import { find } from './jsCookBook/jsExercises';
+import { find } from './_data/_jscookbook/jsExercises';
 import { JsExercises } from "./_ex/exercises";
 import { findRegex } from './regex/regex.exercises';
 import 'mocha';

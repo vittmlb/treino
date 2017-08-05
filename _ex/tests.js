@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 // import { find, value } from '../jsCookBook/jsExercises';
-const regex_exercises_1 = require("../regex/regex.exercises");
+const data_file_1 = require("../_data/data.file");
 const readline = require("readline-sync");
 const globals_1 = require("../globals/globals");
 class ExerciseManager {
@@ -27,14 +27,16 @@ class ExerciseManager {
         this._points = Points;
     }
     get points() {
-        return this.points;
+        return this._points;
     }
 }
 class Tests {
-    constructor(NumberOfQuestions) {
-        this._questionsArray = [];
+    constructor(NumberOfQuestions, TypeOfTest) {
+        this._numberOfQuestions = 0;
+        this._questionsArray = []; // todo: Mudar esse nome. Confunde com o _exercisesArray na hora de chamar a propriedade.
         this._currentQuestionNumber = 0;
         this.numberOfQuestions = NumberOfQuestions;
+        this.typeOfTest = TypeOfTest;
     }
     set numberOfQuestions(NumberOfQuestions) {
         this._numberOfQuestions = NumberOfQuestions;
@@ -47,9 +49,13 @@ class Tests {
             this._questionsArray.push(new ExerciseManager(this._genereteRandomQuestion(), i + 1));
         }
     }
+    set typeOfTest(Type) {
+        this._typeOfTest = Type;
+        this._rawData = data_file_1.generateArray(Type);
+    }
     _genereteRandomQuestion() {
-        let index = this._getRandom(1, regex_exercises_1.value.length);
-        return regex_exercises_1.value[index];
+        let index = this._getRandom(1, this._rawData.length);
+        return this._rawData[index];
     }
     _getRandom(min, max) {
         return Math.floor(Math.random() * (max - min) + min);
@@ -62,7 +68,7 @@ class Tests {
 }
 class DevTests extends Tests {
     constructor(NumberOfQuestions) {
-        super(NumberOfQuestions);
+        super(NumberOfQuestions, data_file_1.ArrayTypes.jsCookBook);
         this.createTest();
     }
     applyTest() {
@@ -81,7 +87,7 @@ class DevTests extends Tests {
 exports.DevTests = DevTests;
 class RegexTests extends Tests {
     constructor(NumberOfQuestions) {
-        super(NumberOfQuestions);
+        super(NumberOfQuestions, data_file_1.ArrayTypes.regexExercises);
         this.createTest();
     }
     applyTest() {
@@ -98,3 +104,31 @@ class RegexTests extends Tests {
     }
 }
 exports.RegexTests = RegexTests;
+class ReplTests extends Tests {
+    constructor(NumberOfQuestions) {
+        super(NumberOfQuestions, data_file_1.ArrayTypes.jsCookBook);
+        this.createTest();
+    }
+    next() {
+        if (this._currentQuestionNumber > this._numberOfQuestions) {
+            console.log('Fim de teste');
+        }
+        else {
+            console.log('else');
+            this._currentQuestionNumber += 1;
+            this.printQ(this._currentQuestionNumber);
+        }
+    }
+    printQ(QuestionNumber) {
+        this._questionsArray[QuestionNumber || this._currentQuestionNumber].exercise.printQuestion();
+        // console.log(this._exercisesArray[QuestionNumber || this._currentQuestionNumber]);
+    }
+    get info() {
+        return this._questionsArray[this._currentQuestionNumber].exercise.info;
+    }
+    set ans(Answer) {
+        let aux = this._questionsArray[this._currentQuestionNumber];
+        aux.exercise.printIsCorrect(Answer) ? aux.points = 1 : aux.points = 0;
+    }
+}
+exports.ReplTests = ReplTests;

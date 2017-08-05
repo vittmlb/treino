@@ -1,8 +1,6 @@
 // import 'node';
-import { find, value } from './jsCookBook/jsExercises';
 import { DevTests, RegexTests } from "./_ex/tests"
 import * as readline from "readline-sync";
-// import * as Mocha from 'mocha';
 import * as Chalk from 'chalk';
 
 import * as figlet from './node_modules/figlet';

@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const jsExercises_1 = require("./jsCookBook/jsExercises");
+const jsExercises_1 = require("./_data/_jscookbook/jsExercises");
 const regex_exercises_1 = require("./regex/regex.exercises");
 require("mocha");
 const b = require("./sera.js");

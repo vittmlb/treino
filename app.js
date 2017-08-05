@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+// import 'node';
 const tests_1 = require("./_ex/tests");
 const readline = require("readline-sync");
-// import * as Mocha from 'mocha';
 const Chalk = require("chalk");
 const figlet = require("./node_modules/figlet");
 const clear = require("./node_modules/clear");

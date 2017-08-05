@@ -1,46 +1,57 @@
 // import { find, value } from '../jsCookBook/jsExercises';
-import { find, value } from '../regex/regex.exercises';
+import { generateArray, ArrayTypes } from '../_data/data.file';
 import * as readline from "readline-sync";
 import { appGlobals } from "../globals/globals";
+
 
 class ExerciseManager {
     _exercise: any;
     _exerciseNumber: number;
     _checked: boolean = false;
     _points: number = 0;
+
     constructor(Exercise: any, ExerciseNumber: number) {
         this._exercise = Exercise;
         this._exerciseNumber = ExerciseNumber;
     }
+
     set checked(Checked: boolean) {
         this._checked = Checked;
     }
+
     get checked(): boolean {
         return this._checked;
     }
+
     get exercise(): any {
         return this._exercise;
     }
+
     get exerciseNumber(): number {
         return this._exerciseNumber;
     }
+
     set points(Points: number) {
         this._points = Points;
     }
+
     get points(): number {
-        return this.points;
+        return this._points;
     }
 }
 
 abstract class Tests {
-    _numberOfQuestions: number;
-    _questionsArray: Array<any> = [];
+    _typeOfTest: ArrayTypes;
+    _rawData: Array<any>;
+    _numberOfQuestions: number = 0;
+    _questionsArray: Array<any> = []; // todo: Mudar esse nome. Confunde com o _exercisesArray na hora de chamar a propriedade.
     _exercisesArray: Array<ExerciseManager>;
     _currentQuestionNumber: number = 0;
     _currentQuestion: any;
 
-    constructor(NumberOfQuestions: number) {
+    constructor(NumberOfQuestions: number, TypeOfTest: ArrayTypes) {
         this.numberOfQuestions = NumberOfQuestions;
+        this.typeOfTest = TypeOfTest;
     }
 
     set numberOfQuestions(NumberOfQuestions: number) {
@@ -57,9 +68,14 @@ abstract class Tests {
         }
     }
 
+    private set typeOfTest(Type: ArrayTypes) {
+        this._typeOfTest = Type;
+        this._rawData = generateArray(Type);
+    }
+
     private _genereteRandomQuestion(): any {
-        let index: number = this._getRandom(1, value.length);
-        return value[index];
+        let index: number = this._getRandom(1, this._rawData.length);
+        return this._rawData[index];
     }
 
     private _getRandom(min: number, max: number): number {
@@ -77,7 +93,7 @@ export class DevTests extends Tests {
     _draftUrl: string;
 
     constructor(NumberOfQuestions: number) {
-        super(NumberOfQuestions);
+        super(NumberOfQuestions, ArrayTypes.jsCookBook);
         this.createTest();
     }
 
@@ -85,6 +101,32 @@ export class DevTests extends Tests {
     applyTest(): any {
         this._questionsArray.forEach(p => {
 
+            appGlobals.exercise = p.exercise;
+            console.log('  --------------------------------------\n');
+            readline.question(p.exercise.printQuestion());
+            appGlobals.requireReload();
+            p.exercise.printIsCorrect(appGlobals.answer);
+        });
+    }
+
+
+    renew(): any {
+        // delete require.cache[require.resolve('../draft.js')];
+    }
+
+}
+
+export class RegexTests extends Tests {
+    _draftUrl: string;
+
+    constructor(NumberOfQuestions: number) {
+        super(NumberOfQuestions, ArrayTypes.regexExercises);
+        this.createTest();
+    }
+
+
+    applyTest(): any {
+        this._questionsArray.forEach(p => {
             appGlobals.exercise = p.exercise;
             console.log('  --------------------------------------\n');
             readline.question(p.exercise.printQuestion());
@@ -99,27 +141,34 @@ export class DevTests extends Tests {
 
 }
 
-export class RegexTests extends Tests {
-    _draftUrl: string;
-
+export class ReplTests extends Tests {
     constructor(NumberOfQuestions: number) {
-        super(NumberOfQuestions);
+        super(NumberOfQuestions, ArrayTypes.jsCookBook);
         this.createTest();
     }
 
-
-    applyTest(): any {
-        this._questionsArray.forEach(p => {
-            appGlobals.exercise = p.exercise;
-            console.log('  --------------------------------------\n');
-            readline.question(p.exercise.printQuestion());
-            appGlobals.requireReload();
-            p.exercise.printIsCorrect(appGlobals.answer);
-        });
+    next(): void {
+        if(this._currentQuestionNumber > this._numberOfQuestions) {
+            console.log('Fim de teste');
+        } else {
+            console.log('else');
+            this._currentQuestionNumber += 1;
+            this.printQ(this._currentQuestionNumber);
+        }
     }
 
-    renew(): any {
-        // delete require.cache[require.resolve('../draft.js')];
+    printQ(QuestionNumber?: number): void {
+        this._questionsArray[QuestionNumber || this._currentQuestionNumber].exercise.printQuestion();
+        // console.log(this._exercisesArray[QuestionNumber || this._currentQuestionNumber]);
+    }
+
+    get info(): any {
+        return this._questionsArray[this._currentQuestionNumber].exercise.info;
+    }
+
+    set ans(Answer: any) {
+        let aux = this._questionsArray[this._currentQuestionNumber];
+        aux.exercise.printIsCorrect(Answer) ? aux.points = 1 : aux.points = 0;
     }
 
 }

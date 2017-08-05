@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const jsExercises_1 = require("../jsCookBook/jsExercises");
+const jsExercises_1 = require("../_data/_jscookbook/jsExercises");
 const chai_1 = require("chai");
 const draft = require("../draft.js");
 let cap = "js_2.3.1";

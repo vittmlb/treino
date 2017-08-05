@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const aswers_1 = require("../_ex/aswers");
+const aswers_1 = require("../../_ex/aswers");
 const _book = 'Regex Exercises';
 const _chapter = 2;
 const _topics = [
