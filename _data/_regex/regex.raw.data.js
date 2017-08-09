@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const aswers_1 = require("../../_ex/aswers");
+const answers_1 = require("../../_ex/answers");
 const _book = 'Regex Exercises';
 const _chapter = 2;
 const _topics = [
@@ -18,7 +18,7 @@ exports.regex_1 = {
         title: `Match all but the last element.`
     },
     answer: {
-        type: aswers_1.AnswersTypes.regex,
+        type: answers_1.AnswersTypes.regex,
         correct: ['3.14529', '-255.34', '128', '1.9e10', '123,340.00'],
         patterns: [/^-?\d+(,\d+)*(\.\d+(e\d+)?)?$/, /\d+/],
     },
@@ -41,7 +41,7 @@ exports.regex_2 = {
         title: `Match all the elements and capture the area code.`
     },
     answer: {
-        type: aswers_1.AnswersTypes.regex,
+        type: answers_1.AnswersTypes.regex,
         correct: ['415', '650', '416', '202', '403', '416'],
         patterns: [/(\d{3})/],
     },
@@ -67,7 +67,7 @@ exports.regex_3 = {
             '* It will match up to the point in the text where it reaches an \'@\' or \'+\'.'
     },
     answer: {
-        type: aswers_1.AnswersTypes.regex,
+        type: answers_1.AnswersTypes.regex,
         correct: ['tom', 'tom.riddle', 'tom.riddle', 'tom', 'potter', 'harry', 'hermione'],
         patterns: [/^([\w.]*)/]
     },
@@ -90,7 +90,7 @@ exports.regex_4 = {
         title: `Capture the html elements without the tags: Ex: <div> capture div.`
     },
     answer: {
-        type: aswers_1.AnswersTypes.regex,
+        type: answers_1.AnswersTypes.regex,
         correct: ['a', 'a', 'div', 'div'],
         patterns: [/>([\w\s]*)</, /<(\w+)/]
     },
@@ -118,7 +118,7 @@ exports.regex_5 = {
         title: `Extract filenames and extension types of only image files (not including temp). Img files: jpg, png and gif.`
     },
     answer: {
-        type: aswers_1.AnswersTypes.regex,
+        type: answers_1.AnswersTypes.regex,
         correct: [['img0912', 'jpg'],
             ['updated_img0912', 'png'],
             ['favicon', 'gif']],
@@ -152,7 +152,7 @@ exports.regex_6 = {
         title: `Capture both sentences and trim them.`
     },
     answer: {
-        type: aswers_1.AnswersTypes.regex,
+        type: answers_1.AnswersTypes.regex,
         correct: ['The quick brown fox...', 'jumps over the lazy dog.'],
         patterns: [/^\s*(.*)\s*$/]
     },
@@ -178,7 +178,7 @@ exports.regex_7 = {
         title: `Extract the filename, method name and line number > form: package.class.methodname(filename:linenumber).`
     },
     answer: {
-        type: aswers_1.AnswersTypes.regex,
+        type: answers_1.AnswersTypes.regex,
         correct: [['makeView', 'ListView.java', '1727'], ['fillDown', 'ListView.java', '652'], ['fillFrom', 'ListView.java', '709']],
         patterns: [/(\w+)\(([\w.]+):(\d+)/]
     },
@@ -208,7 +208,7 @@ exports.regex_8 = {
         title: `Extract the protocol, host and port of all resources.`
     },
     answer: {
-        type: aswers_1.AnswersTypes.regex,
+        type: answers_1.AnswersTypes.regex,
         correct: [['ftp', 'file_server.com', '21'],
             ['https', 'regexone.com', 'null'],
             ['file', 'localhost', '4040'],

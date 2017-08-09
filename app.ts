@@ -1,5 +1,5 @@
 // import 'node';
-import { DevTests, RegexTests } from "./_ex/tests"
+import { DevTests, RegexTests } from "./_ex/exams"
 import * as readline from "readline-sync";
 import * as Chalk from 'chalk';
 

@@ -1,4 +1,4 @@
-import { AnswersTypes } from "../../_ex/aswers";
+import { AnswersTypes } from "../../_ex/answers";
 
 const _book = 'Javascript CookBook';
 const _chapter = 2;

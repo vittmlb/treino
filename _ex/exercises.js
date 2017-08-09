@@ -1,7 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const aswers_1 = require("./aswers");
+const answers_1 = require("./answers");
 const chalk = require("../node_modules/chalk");
+const print_patterns_1 = require("./print.patterns");
 const tab = '  ';
 class Exercises {
     constructor(_id) {
@@ -44,7 +45,18 @@ class Exercises {
     get info() {
         return shallowCopy(this._data.info);
     }
+    checkUserAnswer(UserAnswer) {
+        this.userAnswer = UserAnswer;
+        return this._answer.isCorrect(this.userAnswer);
+    }
+    printResult(UserAnswer) {
+        this.checkUserAnswer(UserAnswer) ? print_patterns_1.PrintPatterns.Correct(this._answer._correct, UserAnswer) : print_patterns_1.PrintPatterns.Wrong(this._answer._correct, UserAnswer);
+    }
+    printQuestion() {
+        console.log(`${tab}Info: `, this._data.info);
+    }
 }
+exports.Exercises = Exercises;
 class JsExercises extends Exercises {
     constructor(obj) {
         super(`js_${obj.chapter}.${obj.subChapter}.${obj.exercise}`);
@@ -55,26 +67,38 @@ class JsExercises extends Exercises {
         this.metadata = obj.metadata;
     }
     set answer(Answer) {
-        this._answer = new aswers_1.JsAnswers(Answer.type);
+        this._answer = new answers_1.JsAnswers(Answer.type);
         this._answer._correct = Answer.correct;
     }
     get answer() {
         return this._answer;
     }
-    isAnswerCorrect(Answer) {
-        this.userAnswer = Answer;
-        return this._answer.isCorrect(Answer);
-    }
-    printIsCorrect(Answer) {
-        console.log(chalk.green('  Correta: '), this.answer.correct);
-        if (this.isAnswerCorrect(Answer)) {
-            console.log(chalk.green(`${tab}Usuário: `), this.userAnswer);
-            console.log(chalk.green(`${tab}Correta`));
-            return true;
-        }
-        console.log(chalk.red(`${tab}Usuario: `), this.userAnswer);
-        return false;
-    }
+    // isAnswerCorrect(Answer: any): boolean {
+    //     this.userAnswer = Answer;
+    //     return this._answer.isCorrect(Answer)
+    // }
+    //
+    // printIsCorrect(Answer: any): boolean {
+    //     console.log(chalk.green('  Correta: '), this.answer.correct);
+    //     if (this.isAnswerCorrect(Answer)) {
+    //         console.log(chalk.green(`${tab}Usuário: `), this.userAnswer);
+    //         console.log(chalk.green(`${tab}Correta`));
+    //         return true;
+    //     }
+    //     console.log(chalk.red(`${tab}Usuario: `), this.userAnswer);
+    //     return false;
+    // }
+    //
+    // printAnswer(): boolean {
+    //     console.log(chalk.green('  Correta: '), this.answer.correct);
+    //     if (this._userAnswer) {
+    //         console.log(chalk.green(`${tab}Usuário: `), this.userAnswer);
+    //         console.log(chalk.green(`${tab}Correta`));
+    //         return true;
+    //     }
+    //     console.log(chalk.red(`${tab}Usuario: `), this.userAnswer);
+    //     return false;
+    // }
     printQuestion() {
         console.log(`${tab}${chalk.blue.bold(this._question.index)} ) ${this._question.title}`);
         console.log(`${tab}Info: `, this._data.info);
@@ -91,26 +115,27 @@ class RegexExercises extends Exercises {
         this.metadata = obj.metadata;
     }
     set answer(Answer) {
-        this._answer = new aswers_1.RegexAnswers(Answer.type);
+        this._answer = new answers_1.RegexAnswers(Answer.type);
         this._answer._correct = Answer.correct;
     }
     get answer() {
         return this._answer;
     }
-    isAnswerCorrect(Answer) {
-        this.userAnswer = Answer;
-        return this._answer.isCorrect(Answer);
-    }
-    printIsCorrect(Answer) {
-        console.log(chalk.green('  Correta: '), this.answer.correct);
-        if (this.isAnswerCorrect(Answer)) {
-            console.log(chalk.green(`${tab}Usuário: `), this.userAnswer);
-            console.log(chalk.green(`${tab}Correta`));
-            return true;
-        }
-        console.log(chalk.red(`${tab}Usuario: `), this.userAnswer);
-        return false;
-    }
+    // isAnswerCorrect(Answer: any): boolean {
+    //     this.userAnswer = Answer;
+    //     return this._answer.isCorrect(Answer)
+    // }
+    //
+    // printIsCorrect(Answer: any): boolean {
+    //     console.log(chalk.green('  Correta: '), this.answer.correct);
+    //     if (this.isAnswerCorrect(Answer)) {
+    //         console.log(chalk.green(`${tab}Usuário: `), this.userAnswer);
+    //         console.log(chalk.green(`${tab}Correta`));
+    //         return true;
+    //     }
+    //     console.log(chalk.red(`${tab}Usuario: `), this.userAnswer);
+    //     return false;
+    // }
     printQuestion() {
         console.log(`${tab}${chalk.blue.bold(this._question.index)} ) ${this._question.title}`);
         console.log(`${tab}Info: `, this._data.info);

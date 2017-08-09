@@ -1,5 +1,6 @@
-import { Answers, AnswersTypes, JsAnswers, RegexAnswers } from "./aswers";
+import { Answers, AnswersTypes, JsAnswers, RegexAnswers } from "./answers";
 import * as chalk from '../node_modules/chalk';
+import { PrintPatterns } from "./print.patterns";
 
 interface IExercise {
     id: string;
@@ -9,8 +10,7 @@ interface IExercise {
 const tab: string = '  ';
 
 
-
-abstract class Exercises implements IExercise {
+export abstract class Exercises implements IExercise {
     id: string;
     _source: any;
     _question: any;
@@ -72,6 +72,18 @@ abstract class Exercises implements IExercise {
         return shallowCopy(this._data.info);
     }
 
+    checkUserAnswer(UserAnswer: any): boolean {
+        this.userAnswer = UserAnswer;
+        return this._answer.isCorrect(this.userAnswer);
+    }
+
+    printResult(UserAnswer: any): void {
+        this.checkUserAnswer(UserAnswer) ? PrintPatterns.Correct(this._answer._correct, UserAnswer): PrintPatterns.Wrong(this._answer._correct, UserAnswer)
+    }
+
+    printQuestion(): void {
+        console.log(`${tab}Info: `, this._data.info);
+    }
 
 }
 
@@ -98,21 +110,33 @@ export class JsExercises extends Exercises {
         return this._answer;
     }
 
-    isAnswerCorrect(Answer: any): boolean {
-        this.userAnswer = Answer;
-        return this._answer.isCorrect(Answer)
-    }
 
-    printIsCorrect(Answer: any): boolean {
-        console.log(chalk.green('  Correta: '), this.answer.correct);
-        if(this.isAnswerCorrect(Answer)) {
-            console.log(chalk.green(`${tab}Usuário: `), this.userAnswer);
-            console.log(chalk.green(`${tab}Correta`));
-            return true;
-        }
-        console.log(chalk.red(`${tab}Usuario: `), this.userAnswer);
-        return false;
-    }
+    // isAnswerCorrect(Answer: any): boolean {
+    //     this.userAnswer = Answer;
+    //     return this._answer.isCorrect(Answer)
+    // }
+    //
+    // printIsCorrect(Answer: any): boolean {
+    //     console.log(chalk.green('  Correta: '), this.answer.correct);
+    //     if (this.isAnswerCorrect(Answer)) {
+    //         console.log(chalk.green(`${tab}Usuário: `), this.userAnswer);
+    //         console.log(chalk.green(`${tab}Correta`));
+    //         return true;
+    //     }
+    //     console.log(chalk.red(`${tab}Usuario: `), this.userAnswer);
+    //     return false;
+    // }
+    //
+    // printAnswer(): boolean {
+    //     console.log(chalk.green('  Correta: '), this.answer.correct);
+    //     if (this._userAnswer) {
+    //         console.log(chalk.green(`${tab}Usuário: `), this.userAnswer);
+    //         console.log(chalk.green(`${tab}Correta`));
+    //         return true;
+    //     }
+    //     console.log(chalk.red(`${tab}Usuario: `), this.userAnswer);
+    //     return false;
+    // }
 
     printQuestion(): void {
         console.log(`${tab}${chalk.blue.bold(this._question.index)} ) ${this._question.title}`);
@@ -142,21 +166,22 @@ export class RegexExercises extends Exercises {
         return this._answer;
     }
 
-    isAnswerCorrect(Answer: any): boolean {
-        this.userAnswer = Answer;
-        return this._answer.isCorrect(Answer)
-    }
 
-    printIsCorrect(Answer: any): boolean {
-        console.log(chalk.green('  Correta: '), this.answer.correct);
-        if(this.isAnswerCorrect(Answer)) {
-            console.log(chalk.green(`${tab}Usuário: `), this.userAnswer);
-            console.log(chalk.green(`${tab}Correta`));
-            return true;
-        }
-        console.log(chalk.red(`${tab}Usuario: `), this.userAnswer);
-        return false;
-    }
+    // isAnswerCorrect(Answer: any): boolean {
+    //     this.userAnswer = Answer;
+    //     return this._answer.isCorrect(Answer)
+    // }
+    //
+    // printIsCorrect(Answer: any): boolean {
+    //     console.log(chalk.green('  Correta: '), this.answer.correct);
+    //     if (this.isAnswerCorrect(Answer)) {
+    //         console.log(chalk.green(`${tab}Usuário: `), this.userAnswer);
+    //         console.log(chalk.green(`${tab}Correta`));
+    //         return true;
+    //     }
+    //     console.log(chalk.red(`${tab}Usuario: `), this.userAnswer);
+    //     return false;
+    // }
 
     printQuestion(): void {
         console.log(`${tab}${chalk.blue.bold(this._question.index)} ) ${this._question.title}`);

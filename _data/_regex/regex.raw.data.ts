@@ -1,4 +1,4 @@
-import { AnswersTypes } from "../../_ex/aswers";
+import { AnswersTypes } from "../../_ex/answers";
 
 const _book = 'Regex Exercises';
 const _chapter = 2;

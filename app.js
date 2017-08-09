@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 // import 'node';
-const tests_1 = require("./_ex/tests");
+const exams_1 = require("./_ex/exams");
 const readline = require("readline-sync");
 const Chalk = require("chalk");
 const figlet = require("./node_modules/figlet");
@@ -25,11 +25,11 @@ readline.promptCLLoop({
             let test;
             switch (index) {
                 case 1:
-                    test = new tests_1.DevTests(8);
+                    test = new exams_1.DevTests(8);
                     test.applyTest();
                     break;
                 case 2:
-                    test = new tests_1.RegexTests(4);
+                    test = new exams_1.RegexTests(4);
                     test.applyTest();
                     break;
             }

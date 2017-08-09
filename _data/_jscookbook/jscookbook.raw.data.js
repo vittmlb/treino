@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const aswers_1 = require("../../_ex/aswers");
+const answers_1 = require("../../_ex/answers");
 const _book = 'Javascript CookBook';
 const _chapter = 2;
 const _topics = [
@@ -18,7 +18,7 @@ exports.js_2_3_1 = {
         title: `Remover o elemento 'seal' do array.`
     },
     answer: {
-        type: aswers_1.AnswersTypes.array,
+        type: answers_1.AnswersTypes.array,
         correct: ['dog', 'cat', 'walrus', 'lion', 'cat'],
     },
     data: {
@@ -40,7 +40,7 @@ exports.js_2_3_2 = {
         title: `Substituir o último elemento 'cat' do array por 'slavost'.`
     },
     answer: {
-        type: aswers_1.AnswersTypes.array,
+        type: answers_1.AnswersTypes.array,
         correct: ['cat', 'dog', 'slavost', 'codorna'],
     },
     data: {
@@ -62,7 +62,7 @@ exports.js_2_3_3 = {
         title: `Substituir o último elemento por 'muslim'.`
     },
     answer: {
-        type: aswers_1.AnswersTypes.array,
+        type: answers_1.AnswersTypes.array,
         correct: ['cat', 'walrus', 'lion', 'muslim']
     },
     data: {
@@ -84,7 +84,7 @@ exports.js_2_3_4 = {
         title: `Substituir o 2o elemento por 'zebra' e 'muslim'`
     },
     answer: {
-        type: aswers_1.AnswersTypes.array,
+        type: answers_1.AnswersTypes.array,
         correct: ['cat', 'zebra', 'muslim', 'cat', 'codorna']
     },
     data: {
